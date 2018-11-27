@@ -37,9 +37,9 @@ class App extends Component {
       array.push({
         seq: ++i,
         name: obj.name,
-        value: obj.value,
-        humid: obj.value2,
-        temperature: obj.value3,
+        value:obj.value,
+        value2: obj.value2,
+        value3: obj.value3,
       });
     });
     this.setState({ sensor1alldata: array });
@@ -48,7 +48,7 @@ class App extends Component {
   componentDidMount() {
     setInterval(() => {
       axios
-        .get('https://pacific-ridge-54544.herokuapp.com//getsensor1')
+        .get('/getsensor1')
         .then(result => {
           this.setState({ sensor1: result.data });
         })
@@ -59,7 +59,7 @@ class App extends Component {
 
     setInterval(() => {
   axios
-    .get('https://pacific-ridge-54544.herokuapp.com//gethumid')
+    .get('/gethumid')
     .then(result => {
       this.setState({ humid: result.data });
     })
@@ -70,7 +70,7 @@ class App extends Component {
 
 setInterval(() => {
   axios
-  .get('https://pacific-ridge-54544.herokuapp.com//gettemperature')
+  .get('/gettemperature')
   .then(result => {
     this.setState({ temperature: result.data });
   })
@@ -81,7 +81,7 @@ setInterval(() => {
 
     setInterval(() => {
       axios
-        .get('https://pacific-ridge-54544.herokuapp.com//getallsensor1')
+        .get('/getallsensor1')
         .then(result => {
           this.dofilter(result.data);
         })
@@ -95,7 +95,7 @@ setInterval(() => {
 
   deleteAllHandler = () => {
       axios
-        .get('https://pacific-ridge-54544.herokuapp.com//deleteall')
+        .get('/deleteall')
         .then(result => {
           this.setState({ showDeletedMessage: true });
         })
@@ -197,11 +197,11 @@ setInterval(() => {
                                               },
                                               {
                                                 Header: 'Humid',
-                                                accessor:'humid',
+                                                accessor:'value2'
                                               },
                                               {
                                                 Header: 'Temperature',
-                                                accessor:'temperature',
+                                                accessor:'value3'
                                               }
                                             ]}
                                             defaultPageSize={5}
@@ -326,11 +326,11 @@ else {
                                             },
                                             {
                                               Header: 'Humid',
-                                              accessor:'humid',
+                                              accessor:'value2'
                                             },
                                             {
                                               Header: 'Temperature',
-                                              accessor:'temperature',
+                                              accessor:'value3'
                                             }
                                           ]}
                                           defaultPageSize={5}
