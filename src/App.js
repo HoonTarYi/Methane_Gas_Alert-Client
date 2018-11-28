@@ -48,7 +48,7 @@ class App extends Component {
   componentDidMount() {
     setInterval(() => {
       axios
-        .get('/getsensor1')
+        .get('https://pacific-ridge-54544.herokuapp.com/getsensor1')
         .then(result => {
           this.setState({ sensor1: result.data });
         })
@@ -59,7 +59,7 @@ class App extends Component {
 
     setInterval(() => {
   axios
-    .get('/gethumid')
+    .get('https://pacific-ridge-54544.herokuapp.com/gethumid')
     .then(result => {
       this.setState({ humid: result.data });
     })
@@ -70,7 +70,7 @@ class App extends Component {
 
 setInterval(() => {
   axios
-  .get('/gettemperature')
+  .get('https://pacific-ridge-54544.herokuapp.com/gettemperature')
   .then(result => {
     this.setState({ temperature: result.data });
   })
@@ -81,7 +81,7 @@ setInterval(() => {
 
     setInterval(() => {
       axios
-        .get('/getallsensor1')
+        .get('https://pacific-ridge-54544.herokuapp.com/getallsensor1')
         .then(result => {
           this.dofilter(result.data);
         })
